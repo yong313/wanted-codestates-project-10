@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import AutoComplete from "./AutoComplete";
 
 import Input from "./Input";
 
@@ -14,6 +15,7 @@ const Search = () => {
             온라인으로 참여하기
           </h1>
           <Input />
+          <AutoComplete />
         </Container>
       </SearchBox>
     </>
@@ -39,6 +41,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   h1 {
     font-size: 34px;
