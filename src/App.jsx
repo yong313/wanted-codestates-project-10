@@ -3,8 +3,11 @@ import { Reset } from "styled-reset";
 import GlobalStyle from "./GlobalStyle";
 import styled from "styled-components";
 
+// 컴포넌트
 import Header from "./components/Header";
 import SearchContents from "./components/SearchContents";
+import GetNews from "./components/GetNews";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -14,6 +17,8 @@ function App() {
       <MainBox>
         <Header />
         <SearchContents />
+        <GetNews />
+        <Footer />
       </MainBox>
     </>
   );
@@ -21,9 +26,7 @@ function App() {
 
 const MainBox = styled.div`
   width: 100%;
-  height: 100vh;
-  background: #efefef;
-  overflow: hidden;
+  height: auto;
 `;
 
 export default App;

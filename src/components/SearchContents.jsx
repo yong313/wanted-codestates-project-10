@@ -27,13 +27,14 @@ const SearchBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 `;
 
 const Container = styled.div`
   width: 1000px;
   height: auto;
   padding-top: 88px;
-  padding-bottom: 224px;
+  padding-bottom: 22.4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

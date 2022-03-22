@@ -58,6 +58,9 @@ const RightBox = styled(LeftBox)`
     &:first-child {
       margin-right: 51px;
     }
+    &:last-child {
+      margin-right: 16px;
+    }
   }
 `;
 
