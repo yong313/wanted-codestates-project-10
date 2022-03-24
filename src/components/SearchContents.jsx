@@ -15,7 +15,7 @@ const Search = () => {
             온라인으로 참여하기
           </h1>
           <Input />
-          <AutoComplete />
+          {/* <AutoComplete /> */}
         </Container>
       </SearchBox>
     </>

@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import search, { getData } from "../redux/search";
 
+import AutoComplete from "./AutoComplete";
+import NoSearch from "./NoSearch";
 import { ReactComponent as SearchIcon } from "../assets/search_icon.svg";
 
 const Input = () => {
+  const [userValue, setIsUserValue] = useState("");
+  const dispatch = useDispatch();
+  const data = useSelector((store) => store.data);
+  let searchResult = data?.data.length === 0 ? false : true;
+
+  useEffect(() => {
+    if (userValue === "") {
+      return;
+    }
+    dispatch(getData(userValue));
+  }, [dispatch, userValue]);
+
   return (
     <>
       <InputBox>
@@ -12,11 +28,20 @@ const Input = () => {
             <SearchIcon className="search_icon" />
           </IconBox>
           <TextBox>
-            <SearchInput placeholder="질환명을 입력해 주세요." />
+            <SearchInput
+              type="search"
+              value={userValue}
+              onChange={(e) => setIsUserValue(e.target.value)}
+              placeholder="질환명을 입력해 주세요."
+            />
           </TextBox>
         </LeftBox>
         <RightBox>검색</RightBox>
       </InputBox>
+      {userValue && searchResult && (
+        <AutoComplete userValue={userValue} data={data} />
+      )}
+      {userValue && !searchResult && <NoSearch />}
     </>
   );
 };

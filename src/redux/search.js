@@ -1,19 +1,23 @@
-const SEARCH_DISEASE = "search/SEARCH_DISEASE";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-const initialState = {
-  searchList: "",
-};
+export const getData = createAsyncThunk("search/getData", async (userValue) => {
+  const response = await axios.get(
+    `https://api.clinicaltrialskorea.com/api/v1/search-conditions/?name=${userValue}`
+  );
+  return response.data;
+});
 
-export const searchWord = (List) => ({ type: SEARCH_DISEASE, List });
+const search = createSlice({
+  name: "data",
+  initialState: {
+    data: [],
+  },
+  extraReducers: {
+    [getData.fulfilled]: (state, action) => {
+      state.data = action.payload;
+    },
+  },
+});
 
-export default function reducer(state = initialState, action) {
-  switch (action.type) {
-    case SEARCH_DISEASE:
-      return {
-        ...state,
-        searchList: action.List,
-      };
-    default:
-      return state;
-  }
-}
+export default search.reducer;
