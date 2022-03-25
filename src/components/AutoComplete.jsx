@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ReactComponent as SearchIcon } from "../assets/search_icon.svg";
 
-const AutoComplete = ({ userValue, data, targetIndex }) => {
+const AutoComplete = ({ userValue, data, targetIndex, buttonClickHandler }) => {
   const searchResult = data?.length === 0 ? null : data.slice(0, 7);
 
   return (
@@ -15,6 +15,7 @@ const AutoComplete = ({ userValue, data, targetIndex }) => {
               key={data.id}
               idx={idx}
               targetIndex={targetIndex === idx ? false : true}
+              onClick={buttonClickHandler}
             >
               <SearchIcon className="search_icon" />
               <SearchWord>{data.name}</SearchWord>
@@ -65,6 +66,14 @@ const AutoList = styled.div`
 
   .search_icon {
     color: ${(props) => (props.targetIndex ? "#505b65" : "#fff")};
+  }
+  :hover {
+    color: #fff;
+    background-color: #abcbfc;
+
+    .search_icon {
+      color: #fff;
+    }
   }
 `;
 
