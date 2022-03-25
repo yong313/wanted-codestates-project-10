@@ -4,9 +4,6 @@ import { ReactComponent as SearchIcon } from "../assets/search_icon.svg";
 
 const AutoComplete = ({ userValue, data, targetIndex }) => {
   const searchResult = data?.length === 0 ? null : data.slice(0, 7);
-  // console.log(data);
-  // console.log(userValue);
-  // console.log(searchResult);
 
   return (
     <>

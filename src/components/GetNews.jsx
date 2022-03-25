@@ -114,7 +114,7 @@ const RightBox = styled.div`
   height: auto;
   position: absolute;
   right: 0;
-  bottom: -11px;
+  bottom: -7px;
 
   #desktop_img {
     display: block;
