@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { ReactComponent as LogoIcon } from "../assets/logo_icon.svg";
+import { ReactComponent as MobileIcon } from "../assets/mobile_menu.svg";
+import MobileMenu from "../components/MobileMenu";
 
 const Header = () => {
+  const wrapperRef = useRef();
+  const [modalOpen, setModalOpen] = useState(false);
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  });
+
+  const handleClickOutside = (event) => {
+    if (wrapperRef && !wrapperRef.current.contains(event.target)) {
+      setModalOpen(false);
+    }
+  };
+
   return (
     <>
-      <HeaderBox>
+      <HeaderBox ref={wrapperRef}>
         <Container>
           <LeftBox>
             <LogoIcon className="logo" />
@@ -13,9 +33,11 @@ const Header = () => {
           <RightBox>
             <p>소식받기</p>
             <p>제휴/문의</p>
+            <MobileIcon id="mobile_menu" onClick={openModal} />
           </RightBox>
         </Container>
       </HeaderBox>
+      <MobileMenu modalOpen={modalOpen} />
     </>
   );
 };
@@ -50,6 +72,10 @@ const LeftBox = styled.div`
 const RightBox = styled(LeftBox)`
   justify-content: flex-end;
 
+  #mobile_menu {
+    display: none;
+  }
+
   p {
     font-size: 16px;
     font-weight: 500;
@@ -60,6 +86,16 @@ const RightBox = styled(LeftBox)`
     }
     &:last-child {
       margin-right: 16px;
+    }
+  }
+
+  @media screen and (max-width: 1040px) {
+    p {
+      display: none;
+    }
+    #mobile_menu {
+      cursor: pointer;
+      display: block;
     }
   }
 `;

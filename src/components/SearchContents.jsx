@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import AutoComplete from "./AutoComplete";
 
 import Input from "./Input";
 
@@ -15,7 +14,6 @@ const Search = () => {
             온라인으로 참여하기
           </h1>
           <Input />
-          <AutoComplete />
         </Container>
       </SearchBox>
     </>
@@ -36,12 +34,16 @@ const Container = styled.div`
   width: 1000px;
   height: auto;
   padding-top: 88px;
-  padding-bottom: 22.4rem;
+  padding-bottom: 22rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
+
+  @media screen and (max-width: 1040px) {
+    padding-bottom: 20rem;
+  }
 
   h1 {
     font-size: 34px;
@@ -49,6 +51,15 @@ const Container = styled.div`
     text-align: center;
     line-height: 54px;
     margin-bottom: 22px;
+  }
+
+  @media screen and (max-width: 1040px) {
+    width: 95%;
+
+    h1 {
+      font-size: 1.5rem;
+      line-height: 2.5rem;
+    }
   }
 `;
 
