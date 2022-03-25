@@ -80,7 +80,7 @@ npm start
     
     ![4](https://user-images.githubusercontent.com/85574104/160146327-6e7807de-9c31-4ea9-b5f6-08685ce0ec2c.gif)
     
-    > swich 문과 JavaScript 키보드 이벤트를 사용하여 추천 검색어 리스트에서 제공하는 7개의 검색어를 이동 및 선택 추천 검색어 상태를 관리하는 targetIndex를 사용하여 props로 자식 요소인 AutoComplete에 전달하여 targetIndex와 index 값을 삼 항 연산자로 비교하여 true, false를 반환 map 함수로 생선 된 index숫자많큼 이동, 선택이 가능하고 선택된 영억 css를 조절하여 백그라운드 및 텍스트 컬러 값을 변경,
+    > swich 문과 JavaScript 키보드 이벤트를 사용하여 추천 검색어 리스트에서 제공하는 7개의 검색어를 이동 및 선택 추천 검색어 상태를 관리하는 targetIndex를 사용하여 props로 자식 요소인 AutoComplete에 전달하여 targetIndex와 index 값을 삼 항 연산자로 비교하여 true, false를 반환 map 함수로 생선 된 index숫자많큼 이동, 선택이 가능하고 선택된 영억 css를 조절하여 백그라운드 및 텍스트 컬러 값을 변경
     > 
     
     ```jsx
@@ -160,6 +160,13 @@ npm start
     > 
     
     ```jsx
+    // onKeyUpHandler
+    case "Enter":
+      if (e.key === "Enter" && targetIndex > -1) {
+        buttonClickHandler();
+      }
+    break;
+        
     // buttonClickHandler
     const buttonClickHandler = () => {
         if (userValue === "") {
@@ -205,7 +212,13 @@ npm start
 
 <br />    
 
-🫠 어려웠던 점
+🫠 &nbsp; 어려웠던 점
 
-검색 중 메세지
+1. Redux-Toolkit
+> 리덕스 툴킷을 처음 사용하는 거라 어려움을 겪었지만 문서와 레퍼런스를 찾아보며 사용법을 익힘, 리덕스에서도 리덕스 툴킷의 사용을 권장하지만 프로젝트 환경에 따라 달라진다는 사실을 알게 되었고, 리덕스보다 사용하기 편하고 간소화되어있는 거 같아 장점이 있다고 느낌
 
+2. 검색어 입력하는 순간 검색 중 메세지 노출 시키기
+> 검색어를 입력하는 input의 상태를 관리하는데 api 호출을 줄이기 위해 debounce로 딜레이 시간을 걸어놔서 검색 중 메시지와 추천 검색어 리스트가 동시에 나오는 상황이 생겨서 어떤 조건을 줘야 할지 고민을 많이 함 
+> isValue라는 input의 상태 값을 하나 더 만들고 리듀스 initialState에 loading의 기본값을 false로 설정한 뒤, loading을 기준으로 isValue에 텍스트가 추가되면 검색 중 메시지를 노출시키고 api 호출이 되면 추천 검색어 컴포넌트를 노출시키는 방법으로 해결
+
+<br />
