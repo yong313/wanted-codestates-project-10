@@ -114,6 +114,7 @@ const Input = () => {
             userValue={userValue}
             data={data}
             targetIndex={targetIndex}
+            buttonClickHandler={buttonClickHandler}
           />
         ) : (
           <NoSearch />
