@@ -40,6 +40,16 @@ const SearchMSGBox = styled.div`
   .searching_text {
     color: #aebbc5;
   }
+
+  @media screen and (max-width: 1040px) {
+    width: 97%;
+    top: 40%;
+    height: 46.4px;
+    padding: 0;
+    padding-left: 3%;
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export default NoSearch;

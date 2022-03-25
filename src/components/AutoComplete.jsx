@@ -19,7 +19,7 @@ const AutoComplete = ({ userValue, data, targetIndex }) => {
               idx={idx}
               targetIndex={targetIndex === idx ? false : true}
             >
-              <SearchIcon />
+              <SearchIcon className="search_icon" />
               <SearchWord>{data.name}</SearchWord>
             </AutoList>
           ))}
@@ -43,6 +43,11 @@ const AutoCompleteBox = styled.div`
   align-items: flex-start;
   flex-direction: column;
   overflow: hidden;
+
+  @media screen and (max-width: 1040px) {
+    width: 100%;
+    top: 40%;
+  }
 `;
 
 const Title = styled.div`
@@ -58,7 +63,12 @@ const AutoList = styled.div`
   display: flex;
   padding: 0 24px;
   align-items: center;
-  background-color: ${(props) => (props.targetIndex ? "#fff" : "#efefef")};
+  color: ${(props) => (props.targetIndex ? "" : "#fff")};
+  background-color: ${(props) => (props.targetIndex ? "#fff" : "#abcbfc")};
+
+  .search_icon {
+    color: ${(props) => (props.targetIndex ? "#505b65" : "#fff")};
+  }
 `;
 
 const SearchWord = styled.p`

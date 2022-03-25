@@ -33,6 +33,9 @@ const FooterBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 1040px) {
+    height: auto;
+  }
 `;
 
 const Container = styled.div`
@@ -40,6 +43,11 @@ const Container = styled.div`
   height: 100%;
   display: flex;
   padding: 0 20px;
+
+  @media screen and (max-width: 1040px) {
+    flex-direction: column;
+    padding: 40px 18px;
+  }
 `;
 
 const LeftBox = styled.div`
@@ -61,10 +69,14 @@ const LeftBox = styled.div`
 
   p {
     font-size: 14px;
+    line-height: 20px;
   }
 
   img {
     margin-top: 22px;
+  }
+  @media screen and (max-width: 1040px) {
+    width: 100%;
   }
 `;
 
@@ -83,6 +95,11 @@ const RightBox = styled(LeftBox)`
 
   p {
     font-size: 16px;
+  }
+
+  @media screen and (max-width: 1040px) {
+    width: 100%;
+    align-items: flex-start;
   }
 `;
 

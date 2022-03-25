@@ -103,6 +103,9 @@ const Input = () => {
           </TextBox>
         </LeftBox>
         <RightBox onClick={buttonClickHandler}>검색</RightBox>
+        <MobileRightBox onClick={buttonClickHandler}>
+          <SearchIcon />
+        </MobileRightBox>
       </InputBox>
 
       {isLoading ? (
@@ -128,6 +131,12 @@ const InputBox = styled.div`
   display: flex;
   border-radius: 50px;
   overflow: hidden;
+
+  @media screen and (max-width: 1040px) {
+    width: 100%;
+    height: 46.4px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  }
 `;
 
 const LeftBox = styled.div`
@@ -143,14 +152,25 @@ const IconBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   .search_icon {
+    color: #505b65;
     margin-left: 11px;
+  }
+
+  @media screen and (max-width: 1040px) {
+    display: none;
   }
 `;
 
 const TextBox = styled.div`
   width: 90%;
   height: 100%;
+
+  @media screen and (max-width: 1040px) {
+    width: 100%;
+    padding-left: 20px;
+  }
 `;
 
 const SearchInput = styled.input`
@@ -161,15 +181,35 @@ const SearchInput = styled.input`
   ::placeholder {
     color: #aebbc5;
   }
+  @media screen and (max-width: 1040px) {
+    font-size: 14px;
+  }
 `;
 
 const RightBox = styled.button`
   width: 15%;
   height: 100%;
-  background: #327be9;
+  background-color: #327be9;
   color: #fff;
   font-size: 18px;
   font-weight: bold;
+
+  @media screen and (max-width: 1040px) {
+    display: none;
+  }
+`;
+
+const MobileRightBox = styled.button`
+  display: none;
+  width: 15%;
+  height: 100%;
+  background-color: #fff;
+  text-align: right;
+  padding-right: 20px;
+
+  @media screen and (max-width: 1040px) {
+    display: block;
+  }
 `;
 
 export default Input;
