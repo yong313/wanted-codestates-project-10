@@ -66,7 +66,7 @@ const RightBox = styled.div`
   height: auto;
   position: absolute;
   right: 0;
-  bottom: -10px;
+  bottom: -11px;
 `;
 
 export default GetNews;

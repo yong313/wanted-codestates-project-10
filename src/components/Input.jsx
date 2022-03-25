@@ -20,6 +20,8 @@ const Input = () => {
   const [isValue, setIsValue] = useState(false);
   // ref를 사용하여 input에 작성된 텍스트를 가져옴
   const userSearchInput = useRef("");
+  // 키보드로 검색어 이동 상태관리
+  const [targetIndex, setTargetIndex] = useState(-1);
   // data의 배열의 length값이 0과 같은지 비교하여 삼항연산자를 사용 컴포넌트 상태 관리
   let searchResult = data?.length === 0 ? false : true;
   // setTimeout 전역 변수 선언
@@ -46,6 +48,43 @@ const Input = () => {
     clearTimeout(timeOut);
   }, [dispatch, timeOut, userValue]);
 
+  const buttonClickHandler = () => {
+    if (userValue === "") {
+      return window.alert("검색어를 입력해 주세요.");
+    }
+    window.location.href = `https://clinicaltrialskorea.com/studies?condition=${userValue}`;
+  };
+
+  const onKeyUpHandler = (e) => {
+    switch (e.key) {
+      case "ArrowUp":
+        if (targetIndex < 0) {
+          return;
+        } else {
+          setTargetIndex(targetIndex - 1);
+        }
+        break;
+      case "ArrowDown":
+        if (targetIndex >= 7) {
+          return;
+        }
+        setTargetIndex(targetIndex + 1);
+        break;
+      case "Escape":
+        if (e.keyCode === 27) {
+          setIsUserValue("");
+        }
+        break;
+      case "Enter":
+        if (e.key === "Enter" && targetIndex > -1) {
+          buttonClickHandler();
+        }
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <>
       <InputBox>
@@ -59,15 +98,20 @@ const Input = () => {
               type="text"
               ref={userSearchInput}
               onChange={debouceOn}
+              onKeyUp={onKeyUpHandler}
             />
           </TextBox>
         </LeftBox>
-        <RightBox>검색</RightBox>
+        <RightBox onClick={buttonClickHandler}>검색</RightBox>
       </InputBox>
 
       {isLoading ? (
         searchResult ? (
-          <AutoComplete userValue={userValue} data={data} />
+          <AutoComplete
+            userValue={userValue}
+            data={data}
+            targetIndex={targetIndex}
+          />
         ) : (
           <NoSearch />
         )
@@ -100,7 +144,6 @@ const IconBox = styled.div`
   justify-content: center;
   align-items: center;
   .search_icon {
-    color: #505b65;
     margin-left: 11px;
   }
 `;

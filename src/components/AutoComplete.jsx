@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ReactComponent as SearchIcon } from "../assets/search_icon.svg";
 
-const AutoComplete = ({ userValue, data }) => {
+const AutoComplete = ({ userValue, data, targetIndex }) => {
   const searchResult = data?.length === 0 ? null : data.slice(0, 7);
   // console.log(data);
   // console.log(userValue);
@@ -14,8 +14,12 @@ const AutoComplete = ({ userValue, data }) => {
         <Title>추천 검색어</Title>
         {userValue &&
           searchResult.map((data, idx) => (
-            <AutoList key={data.id} idx={idx}>
-              <SearchIcon className="search_icon" />
+            <AutoList
+              key={data.id}
+              idx={idx}
+              targetIndex={targetIndex === idx ? false : true}
+            >
+              <SearchIcon />
               <SearchWord>{data.name}</SearchWord>
             </AutoList>
           ))}
@@ -25,7 +29,7 @@ const AutoComplete = ({ userValue, data }) => {
 };
 
 const AutoCompleteBox = styled.div`
-  width: 612px;
+  width: 660px;
   height: auto;
   min-height: 10px;
   border-radius: 30px;
@@ -33,15 +37,17 @@ const AutoCompleteBox = styled.div`
   position: absolute;
   top: 46%;
   z-index: 9;
-  padding: 26px 24px 0 24px;
+  padding: 26px 0;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
+  overflow: hidden;
 `;
 
 const Title = styled.div`
   font-size: 14px;
+  padding: 0 24px;
   color: #6c737a;
   margin-bottom: 10px;
 `;
@@ -50,11 +56,9 @@ const AutoList = styled.div`
   width: 100%;
   height: 50px;
   display: flex;
+  padding: 0 24px;
   align-items: center;
-
-  .search_icon {
-    color: #505b65;
-  }
+  background-color: ${(props) => (props.targetIndex ? "#fff" : "#efefef")};
 `;
 
 const SearchWord = styled.p`

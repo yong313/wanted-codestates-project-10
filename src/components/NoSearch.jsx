@@ -17,7 +17,7 @@ const NoSearch = (props) => {
   return (
     <>
       <SearchMSGBox>
-        <p>검색어 없음 😢</p>
+        <p>검색어 없음</p>
       </SearchMSGBox>
     </>
   );
