@@ -3,19 +3,19 @@
 
 ---
 
-🎁  배포링크
+### 🎁  배포링크
 
 - [배포링크](https://silly-tapioca-df23d1.netlify.app/)
 
 <br />
 
-💫  프로젝트 소개
+### 💫  프로젝트 소개
 
 - 추천 검색어 기능을 제공하는 검색창 구현
 
 <br />
 
-⚙️  프로젝트 기획
+### ⚙️  프로젝트 기획
 
 1. 필수 사항 및 도전 과제 확인
 2. [figma](https://www.figma.com/file/Y2E9VQnkhouOGbKZd22VJx/%ED%9C%B4%EB%A8%BC%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84-%ED%81%B4%EB%A1%A0%EC%BD%94%EB%94%A9-%EC%A0%84%EC%9A%A9%ED%83%9C?node-id=0%3A1)를 사용 ui 디자인
@@ -23,7 +23,13 @@
 
 <br />
 
-🔨  실행방법 - 1
+### 🛠 기능 시연 
+
+![1](https://user-images.githubusercontent.com/85574104/160143893-695c1925-f5a1-49b1-8667-14703ac4339d.gif)
+
+<br />
+
+### 🔨  실행방법 - 1
 
 1. 배포 된 주소로 접속해주세요. - [배포링크](https://silly-tapioca-df23d1.netlify.app/)
 2. 질환명을 검색할 수 있는 검색창에 질환명을 입력해주세요.
@@ -31,7 +37,7 @@
 
 <br />
 
-🔧  실행방법 - 2
+### 🔧  실행방법 - 2
 
 
 ```jsx
@@ -46,23 +52,11 @@ npm start
 
 <br />
 
-🛠 기능 시연 
-
-1. 검색어 추천 기능
-
-시연 gif 사용
-
-<br />
-
-1. 반응형
-
-시연 gif 사용
-
-<br />
-
-👨🏻‍💻 기능 구현 목록
+### 👨🏻‍💻 기능 구현 목록
 
 1. 검색어입력 시간의 간격을 사용 API호출 최적화
+    
+    ![3](https://user-images.githubusercontent.com/85574104/160145771-03ca02b3-fb79-4902-8641-124b65e44379.gif)
     
     > 검색창에 텍스트를 입력할 때마다 API 호출하는 것을 방지하기 위해 lodash의 debounce를 사용하여 0.25초의 API 호출의 간격을 두고 setTimeout을 사용하여 검색 중이라는 메시지를 0.45초 간격을 줘서 총 0.75초의 간격으로 검색어가 입력될 때마다 일어나는 불필요한 API 호출을 제어
     > 
@@ -80,11 +74,11 @@ npm start
       const debouceOn = debounce(userInputHandler, 250);
     ```
     
-    api gif 넣어라~
-    
     <br />
     
 2. 추천 검색어 리스트를 키보드 방향키를 사용하여 이동 및 선택 esc키를 사용하여 추천 검색 리스트 닫기
+    
+    ![4](https://user-images.githubusercontent.com/85574104/160146327-6e7807de-9c31-4ea9-b5f6-08685ce0ec2c.gif)
     
     > swich 문과 JavaScript 키보드 이벤트를 사용하여 추천 검색어 리스트에서 제공하는 7개의 검색어를 이동 및 선택 추천 검색어 상태를 관리하는 targetIndex를 사용하여 props로 자식 요소인 AutoComplete에 전달하여 targetIndex와 index 값을 삼 항 연산자로 비교하여 true, false를 반환 map 함수로 생선 된 index숫자많큼 이동, 선택이 가능하고 선택된 영억 css를 조절하여 백그라운드 및 텍스트 컬러 값을 변경,
     > 
@@ -156,11 +150,11 @@ npm start
     `;
     ```
     
-    api gif 넣어라~
-    
     <br />
     
 3. 엔터 및 검색 버튼 클릭으로 검색한 질환명 페이지로 이동
+    
+    ![5](https://user-images.githubusercontent.com/85574104/160146599-d5397217-5129-437d-bb43-989d8b178846.gif)
     
     > buttonClickHandler를 만들어 검색어 없이 엔터 혹은 검색 버튼을 클릭하면 alert를 사용하여 검색어를 입력하도록 유도, 검색어를 입력 시 url과 검색어를 담고 있는 userValue를 사용하여 해당 페이지로 이동
     > 
@@ -175,16 +169,14 @@ npm start
     };
     ```
     
-    api gif 넣어라~
-    
     <br />
     
 4. 반응형 웹사이트 적용
+
+    ![2](https://user-images.githubusercontent.com/85574104/160144474-5d5a525c-e057-4254-a4ba-09828b64c98a.gif)
     
-    > 미디어 쿼리를 사용하여 반응형을 적용하였고, 모바일 사이즈가 되었을 때 모바일 전용 햄버거 매뉴 제공
-    > 
+    > 미디어 쿼리를 사용하여 반응형을 적용하였고, 모바일 사이즈가 되었을 때 모바일 전용 햄버거 매뉴 제공  
     
-    api gif 넣어라~
 
 <br />    
 
