@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { ReactComponent as SearchIcon } from "../assets/search_icon.svg";
 
 const AutoComplete = ({ userValue, data }) => {
-  const searchResult = data?.data.length === 0 ? null : data.data.slice(0, 7);
-  console.log(data);
-  console.log(userValue);
-  console.log(searchResult);
+  const searchResult = data?.length === 0 ? null : data.slice(0, 7);
+  // console.log(data);
+  // console.log(userValue);
+  // console.log(searchResult);
 
   return (
     <>
@@ -15,7 +15,7 @@ const AutoComplete = ({ userValue, data }) => {
         {userValue &&
           searchResult.map((data, idx) => (
             <AutoList key={data.id} idx={idx}>
-              <SearchIcon />
+              <SearchIcon className="search_icon" />
               <SearchWord>{data.name}</SearchWord>
             </AutoList>
           ))}
@@ -51,6 +51,10 @@ const AutoList = styled.div`
   height: 50px;
   display: flex;
   align-items: center;
+
+  .search_icon {
+    color: #505b65;
+  }
 `;
 
 const SearchWord = styled.p`
