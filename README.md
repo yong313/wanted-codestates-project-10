@@ -58,7 +58,7 @@ npm start
     
     ![3](https://user-images.githubusercontent.com/85574104/160145771-03ca02b3-fb79-4902-8641-124b65e44379.gif)
     
-    > 검색창에 텍스트를 입력할 때마다 API 호출하는 것을 방지하기 위해 lodash의 debounce를 사용하여 0.25초의 API 호출의 간격을 두고 setTimeout을 사용하여 검색 중이라는 메시지를 0.45초 간격을 줘서 총 0.75초의 간격으로 검색어가 입력될 때마다 일어나는 불필요한 API 호출을 제어
+    > 검색창에 텍스트를 입력할 때마다 API 호출하는 것을 방지하기 위해 lodash의 debounce를 사용하여 0.25초의 API 호출의 간격을 두고 setTimeout을 사용하여 검색 중이라는 메시지를 0.45초 간격을 줘서 총 0.7초의 간격으로 검색어가 입력될 때마다 일어나는 불필요한 API 호출을 제어
     > 
     
     ```jsx
@@ -171,12 +171,37 @@ npm start
     
     <br />
     
-4. 반응형 웹사이트 적용
+4. 미디어 쿼리를 사용 반응형 웹사이트 적용
 
     ![2](https://user-images.githubusercontent.com/85574104/160144474-5d5a525c-e057-4254-a4ba-09828b64c98a.gif)
     
-    > 미디어 쿼리를 사용하여 반응형을 적용하였고, 모바일 사이즈가 되었을 때 모바일 전용 햄버거 매뉴 제공  
+    > 컴포넌트 생성 시 width값을 % 로 설정해 가로 사이즈가 줄어들때 자동으로 크기를 가져가도록 설정, 미디어 쿼리를 사용해 특정 컴포넌트 크기 및 색상 노출 여부를 컨트롤 하였고, 모바일 사이즈가 되었을 때 모바일 전용 햄버거 매뉴 제공  
     
+    ```jsx
+    // 헤더 menu
+    <RightBox>
+       <p>소식받기</p>
+       <p>제휴/문의</p>
+      <MobileIcon id="mobile_menu" onClick={openModal} />
+    </RightBox>
+    
+    // css
+    const RightBox = styled(LeftBox)`
+    justify-content: flex-end;
+
+    #mobile_menu {
+        display: none;
+    }
+
+    @media screen and (max-width: 1040px) {
+     p {
+      display: none;
+    }
+    #mobile_menu {
+      cursor: pointer;
+      display: block;
+    }
+    ```    
 
 <br />    
 
